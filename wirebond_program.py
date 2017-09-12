@@ -1,23 +1,27 @@
-# Steven Warren
-# Wirebonder program
-# K&S 8028
+# Author: Steven Warren
+# Contact: sbw986@gmail.com
+# File name: Wirebonder_program.py
+#
+# Compatible Tool: K&S 8028
 
+import csv
 import operator
 from xml.etree import ElementTree
 from tkinter import *
-from shutil import copyfile
 
 # Define pads to bond
-chip_pad_job = ['1C','2D','3A','15C']
-package_pad_job = [3,14,27,54]
+chip_pad_job = ['1C','2D','3A','15C','25D','32B']
+package_pad_job = [3,14,27,29,35,42]
 
 # Paths
 import_dir = 'Import/'
 export_dir = 'Export/'
 
-#Files
-bga_file = 'fingers.wbt'
-chip_file = 'Bondpads.cif'
+# Files
+#bga_file = 'fingers.wbt'
+#chip_file = 'Bondpads.cif'
+bga_file = 'BGA.csv'
+chip_file = 'chip.csv'
 wires_file = 'E2450C3B.WIR'
 
 # Graphing Constants
@@ -28,55 +32,28 @@ canvas_h = 800
 pad_delta_BGA = 3
 pad_delta_chip = 2
 
-# Import BGA info from APD xml file
-with open(import_dir + bga_file) as f:
-    tree = ElementTree.parse(f)
-
-bga_dict = {}
 origin_x = canvas_w/2
 origin_y = canvas_h/2
-for child in tree.findall('finger'):
-    finger_x = child.find('loc_x').text
-    finger_x = float(finger_x.split(' ')[0])
-    finger_x = finger_x/scale_factor_BGA + origin_x
 
-    finger_y = child.find('loc_y').text
-    finger_y = float(finger_y.split(' ')[0])*-1
-    finger_y = finger_y/scale_factor_BGA + origin_y
+# Import BGA info from CSV file
+bga_dict = {}
+with open(import_dir + bga_file) as f:
+   bga_reader = csv.reader(f)
+   for row in bga_reader:
+       finger_x = float(row[1])/scale_factor_BGA + origin_x
+       finger_y = float(row[2])/scale_factor_BGA + origin_y
+       bga_dict[row[0]] = [finger_x, finger_y]
 
-    label_str = child.find('label').text
-    label_val = int(re.sub('[BF]', '', label_str))
-
-    bga_dict[str(label_val)] = [finger_x, finger_y]
-
-# Import Chip info from CIF file
-chip_x = []
-chip_y = []
+# Import Chip info from CSV file
+chip_dict = {}
+chip_indices = {}
 with open(import_dir + chip_file) as f:
-    lines = f.readlines()
-    for line in lines:
-        if line[0] == "P":
-            text_re = re.sub('[,\nP;]',' ',line)
-            split_txt = text_re.split(' ')[1:]
-            split_txt_filt = list(filter(None, split_txt)) 
-            float_vals = list(map(float,split_txt_filt))
-            X_center = (float_vals[0]+float_vals[2])/2
-            Y_center = (float_vals[1]+float_vals[5])/2*-1
-            chip_x.append(X_center/scale_factor_Chip + origin_x)
-            chip_y.append(Y_center/scale_factor_Chip + origin_y)
-
-chip_sorted = sorted(zip(chip_x, chip_y), key=operator.itemgetter(0, 1))
-chip_labels = [str(i+1)+'DL' for i in range(70)]
-chip_labels = chip_labels + ([str(i+1)+'CL' for i in range(70)])
-chip_labels = chip_labels + ([str(i+1)+'BL' for i in range(70)])
-chip_labels = chip_labels + ([str(i+2)+'AL' for i in range(69)])
-chip_labels = chip_labels + ([str(i+1)+'DR' for i in range(70)])
-chip_labels = chip_labels + ([str(i+1)+'CR' for i in range(70)])
-chip_labels = chip_labels + ([str(i+2)+'BR' for i in range(69)])
-chip_labels = chip_labels + ([str(i+2)+'AR' for i in range(69)])
-
-chip_dict = dict(zip(chip_labels,chip_sorted))
-chip_indices = dict(zip(chip_labels,range(1,len(chip_labels)+1)))
+    chip_reader = csv.reader(f)
+    for row in chip_reader:
+        chip_x = (float(row[2])/scale_factor_Chip + origin_x)
+        chip_y = (float(row[3])/scale_factor_Chip + origin_x)
+        chip_dict[row[0]] = [chip_x, chip_y]
+        chip_indices[row[0]] = int(row[1])
 
 # Generate Program Header
 program_header = ''

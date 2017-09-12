@@ -17,19 +17,31 @@ to		U1		2
 connect	3	L1		27
 to		U1		212
 
-connect	4	L1		54
+connect	4	L1		29
 to		U1		85
 
-connect	5	L1		121
+connect	5	L1		35
+to		U1		25
+
+connect	6	L1		42
+to		U1		172
+
+connect	7	L1		133
+to		U1		450
+
+connect	8	L1		140
+to		U1		304
+
+connect	9	L1		146
 to		U1		364
 
-connect	6	L1		148
+connect	10	L1		148
 to		U1		490
 
-connect	7	L1		161
+connect	11	L1		161
 to		U1		281
 
-connect	8	L1		172
+connect	12	L1		172
 to		U1		350
 
 end
