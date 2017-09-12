@@ -8,13 +8,17 @@ from tkinter import *
 from shutil import copyfile
 
 # Define pads to bond
-chip_pad_job = ['1C','2D','3A']
-package_pad_job = [3,10,27]
+chip_pad_job = ['1C','2D','3A','15C']
+package_pad_job = [3,14,27,54]
 
 # Paths
+import_dir = 'Import/'
+export_dir = 'Export/'
+
+#Files
 bga_file = 'fingers.wbt'
 chip_file = 'Bondpads.cif'
-import_file = 'E2450C3B.WIR'
+wires_file = 'E2450C3B.WIR'
 
 # Graphing Constants
 scale_factor_BGA = 20
@@ -25,7 +29,7 @@ pad_delta_BGA = 3
 pad_delta_chip = 2
 
 # Import BGA info from APD xml file
-with open(bga_file) as f:
+with open(import_dir + bga_file) as f:
     tree = ElementTree.parse(f)
 
 bga_dict = {}
@@ -48,7 +52,7 @@ for child in tree.findall('finger'):
 # Import Chip info from CIF file
 chip_x = []
 chip_y = []
-with open(chip_file) as f:
+with open(import_dir + chip_file) as f:
     lines = f.readlines()
     for line in lines:
         if line[0] == "P":
@@ -76,7 +80,7 @@ chip_indices = dict(zip(chip_labels,range(1,len(chip_labels)+1)))
 
 # Generate Program Header
 program_header = ''
-with open(import_file) as template:
+with open(import_dir + wires_file) as template:
     for i in range(10):
         program_header += next(template)
 
@@ -98,11 +102,9 @@ program = program_header + left_str + right_str + 'end'
 print(program)
 
 # Export program
-copyfile(import_file,import_file + '.backup')
-with open(import_file,'w') as export_file:
+with open(export_dir + wires_file,'w') as export_file:
     export_file.write(program)
     export_file.close()
-
 
 # Graphing Initialization
 master = Tk()
