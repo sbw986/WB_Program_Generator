@@ -1,6 +1,6 @@
 # Author: Steven Warren
 # Contact: sbw986@gmail.com
-# File name: Wirebonder_program.py
+# File name: WB_Program_Generator.py
 #
 # Compatible Tool: K&S 8028
 
