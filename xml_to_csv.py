@@ -9,6 +9,12 @@ from tkinter import *
 # Converts XML file of fingers generated from APD
 # to formatted CSV file
 def xml_to_csv(apd_file, export_name):
+    """
+    Generates a csv file given xml information from .wbt file
+    :param apd_file: string defining .wbt file exported from APD
+    :param export_name: string defining name of export CSV file
+    :return: none
+    """
 
     # Paths
     import_dir = 'Import/'

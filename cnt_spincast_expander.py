@@ -3,6 +3,12 @@
 # File name: cnt_spincast_expander.py
 
 def expand_bond_list(chip_pad_job,package_pad_job):
+    """
+    This program expands list of bond sites customized for spincast CNT bond jobs
+    :param chip_pad_job: List of chip pad IDs to bond
+    :param package_pad_job: List of package finger IDs to bond
+    :return: expanded lists
+    """
 
     chip_pad_job_left = []
     chip_pad_job_right = []

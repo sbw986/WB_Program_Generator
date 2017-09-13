@@ -5,6 +5,12 @@
 import numpy as np
 
 def lines_intersect(line1,line2):
+    """
+    Determines if lines intersect
+    :param line1: list of X1, Y1, X2, Y2 floats defining line1
+    :param line2: list X1, Y1, X2, Y2 floats defining line2
+    :return: boolean, true if lines intersect, false otherwise
+    """
     if line1 != line2:
         m1 = (line1[3]-line1[1])/(line1[2]-line1[0])
         b1 = line1[3] - m1*line1[2]

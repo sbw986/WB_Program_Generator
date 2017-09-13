@@ -8,6 +8,12 @@ import csv
 
 # Converts CIF file of bondpads to formatted CSV file
 def cif_to_csv(cif_file, export_name):
+    """
+    Generates a csv file given cif file input.  This function is tailored for CNT spin-cast patterns.
+    :param cif_file: string defining cif file
+    :param export_name: string defining name of CSV export file
+    :return: none
+    """
 
     # Paths
     import_dir = 'Import/'
