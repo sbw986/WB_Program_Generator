@@ -11,7 +11,7 @@ Optional: xml.etree, operator - Needed for csv conversion scripts
 
 ### CONFIGURATION FILES ###
 
-Users must provide three files in the 'Import' directory: package.csv, chip.csv, .WIR
+Users must provide three files in the 'Config' directory: package.csv, chip.csv, .WIR
 
 package.csv:
 
@@ -33,7 +33,7 @@ chip.csv:
 
 ### USAGE ###
 
-Ensure package.csv, chip.csv and a template .WIR file are saved in 'Import' folder
+Ensure package.csv, chip.csv and a template .WIR file are saved in 'Config' folder
 
 Within WB_Program_Generator:
 
