@@ -1,7 +1,7 @@
-# Wirebonder Automation #
+# WB Program Generator #
 
 This script generates a program that can be use on a K&S 8028 wirebonder for automated bonding.  The script also
-generates a wirebond diagram.
+generates a wire bonding diagram.
 
 ### REQUIRED FILES ###
 
