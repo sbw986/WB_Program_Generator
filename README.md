@@ -1,6 +1,7 @@
-# README #
+# Wirebonder Automation #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Given chip information, package information, and a wire list, this script generates a program that can be use
+on a K&S 8028 wirebonder for automated bonding.  The script also generates a wirebond diagram.
 
 ### What is this repository for? ###
 
