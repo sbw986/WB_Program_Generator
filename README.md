@@ -11,9 +11,9 @@ Optional: xml.etree, operator - Needed for csv conversion scripts
 
 ### REQUIRED FILES ###
 
-Users must provide three files in the 'Import' directory: bga.csv, chip.csv, .WIR
+Users must provide three files in the 'Import' directory: package.csv, chip.csv, .WIR
 
-bga.csv:
+package.csv:
 
 * This file should be arranged into three columns: Finger #, Finger X Origin (um),
 Finger Y Origin (um).
@@ -33,18 +33,18 @@ chip.csv:
 
 ### RUNNING ###
 
-Ensure bga.csv, chip.csv and a template .WIR file are saved in 'Import' folder
+Ensure package.csv, chip.csv and a template .WIR file are saved in 'Import' folder
 
 Within WB_Program_Generator:
 
 * Define chip pads to-be-bonded in order using chip_pad_job and Pad ID value
 
-* Define BGA pads to-be-bonded in order using package_pad_job and Finger #.  There should be a 1-1 correspondence to
+* Define package pads to-be-bonded in order using package_pad_job and Finger #.  There should be a 1-1 correspondence to
 chip_pad_job
 
 * Define export file name using wires_file variable
 
-Run WB_Program_Generator script 
+Run WB_Program_Generator script
 
 Change Graphing Constants within WB_Program_Generator script if plotting is not scaling properly
 

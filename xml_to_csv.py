@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
     # Files
     apd_file = 'fingers.wbt'
-    export_name = 'bga.csv'
+    export_name = 'package.csv'
 
     # Run Conversion
     xml_to_csv(apd_file, export_name)

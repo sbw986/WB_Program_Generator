@@ -21,7 +21,7 @@ import_dir = 'Import/'
 export_dir = 'Export/'
 
 # Files
-package_file = 'bga.csv'
+package_file = 'package.csv'
 chip_file = 'chip.csv'
 wires_file = 'E2450C3B.WIR'
 
