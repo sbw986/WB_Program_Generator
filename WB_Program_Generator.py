@@ -21,29 +21,29 @@ import_dir = 'Import/'
 export_dir = 'Export/'
 
 # Files
-bga_file = 'bga.csv'
+package_file = 'bga.csv'
 chip_file = 'chip.csv'
 wires_file = 'E2450C3B.WIR'
 
 # Graphing Constants
-scale_factor_BGA = 20
-scale_factor_Chip = 20000
+scale_factor_package = 20
+scale_factor_chip = 20000
 canvas_w = 1000
 canvas_h = 800
-pad_delta_BGA = 3
+pad_delta_package = 3
 pad_delta_chip = 2
 
 origin_x = canvas_w/2
 origin_y = canvas_h/2
 
 # Import BGA info from CSV file
-bga_dict = {}
-with open(import_dir + bga_file) as f:
-   bga_reader = csv.reader(f)
-   for row in bga_reader:
-       finger_x = float(row[1])/scale_factor_BGA + origin_x
-       finger_y = float(row[2])/scale_factor_BGA + origin_y
-       bga_dict[row[0]] = [finger_x, finger_y]
+package_dict = {}
+with open(import_dir + package_file) as f:
+   package_reader = csv.reader(f)
+   for row in package_reader:
+       finger_x = float(row[1])/scale_factor_package + origin_x
+       finger_y = float(row[2])/scale_factor_package + origin_y
+       package_dict[row[0]] = [finger_x, finger_y]
 
 # Import Chip info from CSV file
 chip_dict = {}
@@ -51,9 +51,9 @@ chip_indices = {}
 with open(import_dir + chip_file) as f:
     chip_reader = csv.reader(f)
     for row in chip_reader:
-        chip_x = (float(row[2])/scale_factor_Chip + origin_x)
-        chip_y = (float(row[3])/scale_factor_Chip + origin_y)
-        chip_dict[row[0]] = [chip_x, chip_y]
+        pad_x = (float(row[2])/scale_factor_chip + origin_x)
+        pad_y = (float(row[3])/scale_factor_chip + origin_y)
+        chip_dict[row[0]] = [pad_x, pad_y]
         chip_indices[row[0]] = int(row[1])
 
 # Generate Program Header from .WIR template
@@ -63,7 +63,6 @@ with open(import_dir + wires_file) as template:
         program_header += next(template)
 
 # Generate Program
-num_bonds = len(package_pad_job) * 2
 wire_index = 1
 prog_str = ''
 for chip_pad,package_pad in zip(chip_pad_job,package_pad_job):
@@ -88,20 +87,20 @@ w.pack()
 # Draw Wirebonds
 drawn_bonds = []
 for chip_pad,package_pad in zip(chip_pad_job,package_pad_job):
-    i = w.create_line(chip_dict[chip_pad][0], chip_dict[chip_pad][1], bga_dict[str(package_pad)][0], bga_dict[str(package_pad)][1])
+    i = w.create_line(chip_dict[chip_pad][0], chip_dict[chip_pad][1], package_dict[str(package_pad)][0], package_dict[str(package_pad)][1])
     for bond in drawn_bonds:
         if lines_intersect(w.coords(bond),w.coords(i)):
             w.itemconfig(bond, fill='red')
             w.itemconfig(i, fill='red')
     drawn_bonds.append(i)
 
-# Draw BGA
-for p in bga_dict:
-    x = bga_dict[p][0]
-    y = bga_dict[p][1]
-    w.create_rectangle(x - pad_delta_BGA, y - pad_delta_BGA, x + pad_delta_BGA, y + pad_delta_BGA)
+# Draw Package
+for p in package_dict:
+    x = package_dict[p][0]
+    y = package_dict[p][1]
+    w.create_rectangle(x - pad_delta_package, y - pad_delta_package, x + pad_delta_package, y + pad_delta_package)
 
-# Draw Electrodes
+# Draw Chip
 for e in chip_dict:
     x = chip_dict[e][0]
     y = chip_dict[e][1]
