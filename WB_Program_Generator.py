@@ -5,11 +5,13 @@
 # Compatible Tool: K&S 8028
 
 import csv
+import subprocess
 from lines_intersect import lines_intersect
 from cnt_spincast_expander import expand_bond_list
 from tkinter import *
 
 # Define pads to bond
+
 chip_pad_job = ['2D','5C','10D','15A','16B','18C','20B','25A','30D']
 package_pad_job = [4, 8, 9, 13, 22, 26, 27, 42, 35]
 
@@ -105,6 +107,11 @@ for e in chip_dict:
     x = chip_dict[e][0]
     y = chip_dict[e][1]
     w.create_rectangle(x - pad_delta_chip, y - pad_delta_chip, x + pad_delta_chip, y + pad_delta_chip)
+
+# Save Bonding Diagram
+w.postscript(file = 'tmp.ps',colormode = 'color')
+process = subprocess.call(["ps2pdf", "tmp.ps", "Export/Diagram.pdf"])
+process = subprocess.call(["rm", "tmp.ps"])
 
 # Graph
 mainloop()
