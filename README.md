@@ -23,7 +23,7 @@ The 'cif_to_csv.py' script can be used to convert a CIF file to the required CSV
 chip_pad_job
 * Ensure bga.csv, chip.csv and a template .WIR file are saved in 'Import' folder
 * Define export file name using wires_file variable
-* Run script.
-* Change Graphing Constants if plotting is not scaling properly.
+* Run script
+* Change Graphing Constants if plotting is not scaling properly
 
 
