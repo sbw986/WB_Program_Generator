@@ -109,6 +109,7 @@ for e in chip_dict:
     w.create_rectangle(x - pad_delta_chip, y - pad_delta_chip, x + pad_delta_chip, y + pad_delta_chip)
 
 # Save Bonding Diagram
+w.update()
 w.postscript(file = 'tmp.ps',colormode = 'color')
 process = subprocess.call(["ps2pdf", "tmp.ps", "Export/Diagram.pdf"])
 process = subprocess.call(["rm", "tmp.ps"])
