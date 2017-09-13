@@ -3,13 +3,13 @@
 This script generates a program that can be used on a K&S 8028 wire bonder for automated bonding.  The script also
 generates and saves a wire bonding diagram.
 
-### MODULES ###
+### DEPENDENCIES ###
 
 Required: csv, tkinter, numpy, subprocess
 
 Optional: xml.etree, operator - Needed for csv conversion scripts
 
-### REQUIRED FILES ###
+### CONFIGURATION FILES ###
 
 Users must provide three files in the 'Import' directory: package.csv, chip.csv, .WIR
 
@@ -31,7 +31,7 @@ chip.csv:
 
 * Template .WIR file copied from any K&S Bonder program.
 
-### RUNNING ###
+### USAGE ###
 
 Ensure package.csv, chip.csv and a template .WIR file are saved in 'Import' folder
 

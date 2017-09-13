@@ -32,10 +32,10 @@ to		U1		160
 connect	8	L1		42
 to		U1		234
 
-connect	9	L1		1
+connect	9	L1		58
 to		U1		30
 
-connect	10	L1		174
+connect	10	L1		117
 to		U1		309
 
 connect	11	L1		133
