@@ -17,10 +17,10 @@ def xml_to_csv(apd_file, export_name):
     """
 
     # Paths
-    import_dir = 'Import/'
-    export_dir = 'Import/'
+    import_dir = 'Config/'
+    export_dir = 'Config/'
 
-    # Import BGA info from APD xml file
+    # Config BGA info from APD xml file
     with open(import_dir + apd_file) as f:
         tree = ElementTree.parse(f)
 

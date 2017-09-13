@@ -16,9 +16,9 @@ def cif_to_csv(cif_file, export_name):
     """
 
     # Paths
-    import_dir = 'Import/'
+    import_dir = 'Config/'
 
-    # Import Chip info from CIF file
+    # Config Chip info from CIF file
     chip_x = []
     chip_y = []
 

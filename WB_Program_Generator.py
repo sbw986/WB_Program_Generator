@@ -19,7 +19,7 @@ package_pad_job = [4, 8, 9, 13, 22, 26, 27, 42, 58]
 chip_pad_job, package_pad_job = expand_bond_list(chip_pad_job, package_pad_job)
 
 # Paths
-import_dir = 'Import/'
+import_dir = 'Config/'
 export_dir = 'Export/'
 
 # Files
@@ -38,7 +38,7 @@ pad_delta_chip = 2
 origin_x = canvas_w/2
 origin_y = canvas_h/2
 
-# Import BGA info from CSV file
+# Config BGA info from CSV file
 package_dict = {}
 with open(import_dir + package_file) as f:
    package_reader = csv.reader(f)
@@ -47,7 +47,7 @@ with open(import_dir + package_file) as f:
        finger_y = float(row[2])/scale_factor_package + origin_y
        package_dict[row[0]] = [finger_x, finger_y]
 
-# Import Chip info from CSV file
+# Config Chip info from CSV file
 chip_dict = {}
 chip_indices = {}
 with open(import_dir + chip_file) as f:
