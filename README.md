@@ -13,14 +13,23 @@ Optional: xml.etree, operator - Needed for csv conversion scripts
 
 Users must provide three files in the 'Import' directory: bga.csv, chip.csv, .WIR
 
-bga.csv - This file should be arranged into three columns: Finger #, Finger X Origin (um),
-Finger Y Origin (um).  The 'xml_to_csv.py' script can be used to convert an APD generated xml output to the required
+bga.csv:
+
+* This file should be arranged into three columns: Finger #, Finger X Origin (um),
+Finger Y Origin (um).
+
+* The 'xml_to_csv.py' script can be used to convert an APD generated xml output to the required
 CSV formatting.
 
-chip.csv - This file should be arranged into four columns: Pad ID value, Pad #, Pad X Origin (nm), Pad Y Origin (nm).
-The 'cif_to_csv.py' script can be used to convert a CIF file to the required CSV format.
+chip.csv:
 
-.WIR - Template .WIR file copied from any K&S Bonder program.
+* This file should be arranged into four columns: Pad ID value, Pad #, Pad X Origin (nm), Pad Y Origin (nm).
+
+* The 'cif_to_csv.py' script can be used to convert a CIF file to the required CSV format.
+
+.WIR:
+
+* Template .WIR file copied from any K&S Bonder program.
 
 ### RUNNING ###
 
@@ -35,7 +44,7 @@ chip_pad_job
 
 * Define export file name using wires_file variable
 
-Run WB_Program_Generator script
+Run WB_Program_Generator script 
 
 Change Graphing Constants within WB_Program_Generator script if plotting is not scaling properly
 
