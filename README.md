@@ -1,6 +1,6 @@
 # WB Program Generator #
 
-This script generates a program that can be use on a K&S 8028 wire bonder for automated bonding.  The script also
+This script generates a program that can be used on a K&S 8028 wire bonder for automated bonding.  The script also
 generates a wire bonding diagram.
 
 ### MODULES ###
