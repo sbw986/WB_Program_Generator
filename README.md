@@ -12,16 +12,18 @@ Finger Y Origin (um).  The 'xml_to_csv.py' script can be used to convert an APD 
 CSV formatting.
 
 chip.csv - This file should be arranged into four columns: Pad ID value, Pad #, Pad X Origin (nm), Pad Y Origin (nm).
-The 'cif_to_csv.py' script can be used to convert as CIF file to the required CSV format.
+The 'cif_to_csv.py' script can be used to convert a CIF file to the required CSV format.
 
 [].WIR - Template .WIR file copied from any K&S Bonder program.
 
 ### RUNNING ###
 
-* Define chip pads to-be-bonded in order using chip_pad_job
-* Define BGA pads to-be-bonded in order using package_pad_job.  There should be a 1-1 correspondence to chip_pad_job
+* Define chip pads to-be-bonded in order using chip_pad_job and Pad ID value
+* Define BGA pads to-be-bonded in order using package_pad_job and Finger #.  There should be a 1-1 correspondence to
+chip_pad_job
 * Ensure bga.csv, chip.csv and a template .WIR file are saved in 'Import' folder
 * Define export file name using wires_file variable
-* Run script.  Change Graphing Constants if plotting is not scaling properly.
+* Run script.
+* Change Graphing Constants if plotting is not scaling properly.
 
 
