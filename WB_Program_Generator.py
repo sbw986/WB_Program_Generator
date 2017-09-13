@@ -6,9 +6,10 @@
 
 import csv
 import subprocess
-from lines_intersect import lines_intersect
-from cnt_spincast_expander import expand_bond_list
 from tkinter import *
+
+from Modules.cnt_spincast_expander import expand_bond_list
+from Modules.lines_intersect import lines_intersect
 
 # Define pads to bond
 chip_pad_job = ['2D','5C','10D','15A','16B','18C','20B','25A','30D']
