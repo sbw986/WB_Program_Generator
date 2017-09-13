@@ -1,3 +1,7 @@
+# Author: Steven Warren
+# Contact: sbw986@gmail.com
+# File name: xml_to_csv.py
+
 from xml.etree import ElementTree
 import csv
 from tkinter import *
@@ -36,7 +40,7 @@ if __name__ == '__main__':
 
     # Files
     apd_file = 'fingers.wbt'
-    export_name = 'BGA.csv'
+    export_name = 'bga.csv'
 
     # Run Conversion
     xml_to_csv(apd_file, export_name)

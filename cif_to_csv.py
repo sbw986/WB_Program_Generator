@@ -1,3 +1,7 @@
+# Author: Steven Warren
+# Contact: sbw986@gmail.com
+# File name: cif_to_csv.py
+
 import operator
 from tkinter import *
 import csv

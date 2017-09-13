@@ -5,22 +5,23 @@
 # Compatible Tool: K&S 8028
 
 import csv
-import operator
-from xml.etree import ElementTree
+from lines_intersect import lines_intersect
+from cnt_spincast_expander import expand_bond_list
 from tkinter import *
 
 # Define pads to bond
-chip_pad_job = ['1C','2D','3A','15C','25D','32B']
-package_pad_job = [3,14,27,29,35,42]
+chip_pad_job = ['2D','5C','10D','15A','16B','18C','20B','25A','30D']
+package_pad_job = [4, 8, 9, 13, 22, 26, 27, 42, 35]
+
+# Customize bond job for CNT work
+chip_pad_job, package_pad_job = expand_bond_list(chip_pad_job, package_pad_job)
 
 # Paths
 import_dir = 'Import/'
 export_dir = 'Export/'
 
 # Files
-#bga_file = 'fingers.wbt'
-#chip_file = 'Bondpads.cif'
-bga_file = 'BGA.csv'
+bga_file = 'bga.csv'
 chip_file = 'chip.csv'
 wires_file = 'E2450C3B.WIR'
 
@@ -51,11 +52,11 @@ with open(import_dir + chip_file) as f:
     chip_reader = csv.reader(f)
     for row in chip_reader:
         chip_x = (float(row[2])/scale_factor_Chip + origin_x)
-        chip_y = (float(row[3])/scale_factor_Chip + origin_x)
+        chip_y = (float(row[3])/scale_factor_Chip + origin_y)
         chip_dict[row[0]] = [chip_x, chip_y]
         chip_indices[row[0]] = int(row[1])
 
-# Generate Program Header
+# Generate Program Header from .WIR template
 program_header = ''
 with open(import_dir + wires_file) as template:
     for i in range(10):
@@ -64,19 +65,15 @@ with open(import_dir + wires_file) as template:
 # Generate Program
 num_bonds = len(package_pad_job) * 2
 wire_index = 1
-left_str = ''
-right_str = ''
+prog_str = ''
 for chip_pad,package_pad in zip(chip_pad_job,package_pad_job):
     if wire_index == 1:
-        temp_str_left = 'connect' + '\t' + str(wire_index) + '\tL1\t\t' + str(package_pad) +'\t1\tSSB1_Loop'+ '\nto\t\tU1\t\t' + str(chip_indices[chip_pad + 'L']) + '\n\n'
+        temp_str = 'connect' + '\t' + str(wire_index) + '\tL1\t\t' + str(package_pad) +'\t1\tSSB1_Loop'+ '\nto\t\tU1\t\t' + str(chip_indices[chip_pad]) + '\n\n'
     else:
-        temp_str_left = 'connect' + '\t' + str(wire_index) + '\tL1\t\t' + str(package_pad) + '\nto\t\tU1\t\t' + str(chip_indices[chip_pad + 'L']) + '\n\n'
-    temp_str_right = 'connect' + '\t' + str(num_bonds + 1 - wire_index) + '\tL1\t\t' + str(58*3 + 1 - package_pad) + '\nto\t\tU1\t\t' + str(chip_indices[chip_pad + 'R']) + '\n\n'
-    left_str = left_str + temp_str_left
-    right_str = temp_str_right + right_str
+        temp_str = 'connect' + '\t' + str(wire_index) + '\tL1\t\t' + str(package_pad) + '\nto\t\tU1\t\t' + str(chip_indices[chip_pad]) + '\n\n'
+    prog_str = prog_str + temp_str
     wire_index +=1
-program = program_header + left_str + right_str + 'end'
-print(program)
+program = program_header + prog_str + 'end'
 
 # Export program
 with open(export_dir + wires_file,'w') as export_file:
@@ -89,13 +86,14 @@ w = Canvas(master,width = canvas_w, height = canvas_h)
 w.pack()
 
 # Draw Wirebonds
+drawn_bonds = []
 for chip_pad,package_pad in zip(chip_pad_job,package_pad_job):
-    chip_pad_l = chip_pad + 'L'
-    chip_pad_r = chip_pad + 'R'
-    package_pad_l = str(package_pad)
-    package_pad_r = str(58*3 + 1 - package_pad)
-    w.create_line(chip_dict[chip_pad_l][0], chip_dict[chip_pad_l][1], bga_dict[package_pad_l][0], bga_dict[package_pad_l][1])
-    w.create_line(chip_dict[chip_pad_r][0], chip_dict[chip_pad_r][1], bga_dict[package_pad_r][0], bga_dict[package_pad_r][1])
+    i = w.create_line(chip_dict[chip_pad][0], chip_dict[chip_pad][1], bga_dict[str(package_pad)][0], bga_dict[str(package_pad)][1])
+    for bond in drawn_bonds:
+        if lines_intersect(w.coords(bond),w.coords(i)):
+            w.itemconfig(bond, fill='red')
+            w.itemconfig(i, fill='red')
+    drawn_bonds.append(i)
 
 # Draw BGA
 for p in bga_dict:
@@ -111,3 +109,5 @@ for e in chip_dict:
 
 # Graph
 mainloop()
+
+
