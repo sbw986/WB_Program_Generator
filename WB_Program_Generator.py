@@ -11,7 +11,6 @@ from cnt_spincast_expander import expand_bond_list
 from tkinter import *
 
 # Define pads to bond
-
 chip_pad_job = ['2D','5C','10D','15A','16B','18C','20B','25A','30D']
 package_pad_job = [4, 8, 9, 13, 22, 26, 27, 42, 35]
 
