@@ -13,7 +13,7 @@ from Modules.lines_intersect import lines_intersect
 
 # Define pads to bond
 chip_pad_job = ['2D','5C','10D','15A','16B','18C','20B','25A','30D']
-package_pad_job = [4, 8, 9, 13, 22, 26, 27, 42, 35]
+package_pad_job = [4, 8, 9, 13, 22, 26, 27, 42, 1]
 
 # Customize bond job for CNT work
 chip_pad_job, package_pad_job = expand_bond_list(chip_pad_job, package_pad_job)
@@ -103,9 +103,9 @@ for p in package_dict:
     w.create_rectangle(x - pad_delta_package, y - pad_delta_package, x + pad_delta_package, y + pad_delta_package)
 
 # Draw Chip
-for e in chip_dict:
-    x = chip_dict[e][0]
-    y = chip_dict[e][1]
+for c in chip_dict:
+    x = chip_dict[c][0]
+    y = chip_dict[c][1]
     w.create_rectangle(x - pad_delta_chip, y - pad_delta_chip, x + pad_delta_chip, y + pad_delta_chip)
 
 # Save Bonding Diagram
