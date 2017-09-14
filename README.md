@@ -42,6 +42,8 @@ Within WB_Program_Generator:
 * Define package pads to-be-bonded in order using package_pad_job and Finger #.  There should be a 1-1 correspondence to
 chip_pad_job
 
+* Define wirebond group in order using groups_job.  Again, should be a 1-1 correspondence to chip_pad_job and package_pad_job
+
 * Define export file name using wires_file variable
 
 Run WB_Program_Generator script

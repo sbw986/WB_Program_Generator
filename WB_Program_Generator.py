@@ -14,10 +14,10 @@ from src.lines_intersect import lines_intersect
 # Define pads to bond
 chip_pad_job = ['2D','5C','10D','15A','16B','18C','20B','25A']
 package_pad_job = [4, 8, 9, 13, 22, 26, 27, 42]
+groups_job = []
 
 # Customize bond job for CNT work
 chip_pad_job, package_pad_job, groups_job = expand_bond_list(chip_pad_job, package_pad_job)
-print(groups_job)
 
 # Paths
 import_dir = 'Config/'
