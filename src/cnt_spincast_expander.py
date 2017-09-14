@@ -19,8 +19,27 @@ def expand_bond_list(chip_pad_job,package_pad_job):
     chip_pt = ['PT01', 'CC01', 'PT02', 'PT03', 'CC03', 'PT04']
     package_pt = [59, 62, 116, 175, 178, 232]
 
+    grp_L = []
+    grp_R = []
+    grp_PT = [1 for i,_ in enumerate(package_pt)]
+
     for chip,package in zip(chip_pad_job,package_pad_job):
         if package >=1 and package <= 58:
+            if 'D' in chip:
+                grp_L.append(1)
+                grp_R.append(4)
+            elif 'C' in chip:
+                grp_L.append(2)
+                grp_R.append(3)
+            elif 'B' in chip:
+                grp_L.append(3)
+                grp_R.append(2)
+            elif 'A' in chip:
+                grp_L.append(4)
+                grp_R.append(1)
+            elif 'PT' in chip:
+                grp_PT.append(1)
+
             chip_pad_job_left.append(chip + 'L')
             chip_pad_job_right.append(chip + 'R')
             package_pad_job_left.append(package)
@@ -28,5 +47,6 @@ def expand_bond_list(chip_pad_job,package_pad_job):
 
     chip_pad_job_expanded = chip_pad_job_left + list(reversed(chip_pad_job_right)) + chip_pt
     package_pad_job_expanded = package_pad_job_left + list(reversed(package_pad_job_right)) + package_pt
+    groups_job_expanded = grp_L + list(reversed(grp_R)) + grp_PT
 
-    return chip_pad_job_expanded, package_pad_job_expanded
+    return chip_pad_job_expanded, package_pad_job_expanded, groups_job_expanded

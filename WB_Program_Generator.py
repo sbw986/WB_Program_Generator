@@ -12,11 +12,12 @@ from src.cnt_spincast_expander import expand_bond_list
 from src.lines_intersect import lines_intersect
 
 # Define pads to bond
-chip_pad_job = ['2D','5C','10D','15A','16B','18C','20B','25A','30D']
-package_pad_job = [4, 8, 9, 13, 22, 26, 27, 42, 58]
+chip_pad_job = ['2D','5C','10D','15A','16B','18C','20B','25A']
+package_pad_job = [4, 8, 9, 13, 22, 26, 27, 42]
 
 # Customize bond job for CNT work
-chip_pad_job, package_pad_job = expand_bond_list(chip_pad_job, package_pad_job)
+chip_pad_job, package_pad_job, groups_job = expand_bond_list(chip_pad_job, package_pad_job)
+print(groups_job)
 
 # Paths
 import_dir = 'Config/'
@@ -25,7 +26,7 @@ export_dir = 'Export/'
 # Files
 package_file = 'package.csv'
 chip_file = 'chip.csv'
-wires_file = 'E2450C3B.WIR'
+wires_file = 'IE739303.WIR'
 
 # Graphing Constants
 scale_factor_package = 20
@@ -61,17 +62,22 @@ with open(import_dir + chip_file) as f:
 # Generate Program Header from .WIR template
 program_header = ''
 with open(import_dir + wires_file) as template:
-    for i in range(10):
+    stop_parse = False
+    while stop_parse == False:
         program_header += next(template)
+        if 'profile' in program_header:
+            stop_parse = True
+    program_header += next(template)
+    program_header += next(template)
 
 # Generate Program
 wire_index = 1
 prog_str = ''
-for chip_pad,package_pad in zip(chip_pad_job,package_pad_job):
+for chip_pad,package_pad,group in zip(chip_pad_job,package_pad_job,groups_job):
     if wire_index == 1:
-        temp_str = 'connect' + '\t' + str(wire_index) + '\tL1\t\t' + str(package_pad) +'\t1\tSSB1_Loop'+ '\nto\t\tU1\t\t' + str(chip_indices[chip_pad]) + '\n\n'
+        temp_str = 'connect' + '\t' + str(wire_index) + '\tL1\t\t' + str(package_pad) + '\t' + str(group) + '\tSSB1_Loop'+ '\nto\t\tU1\t\t' + str(chip_indices[chip_pad]) + '\n\n'
     else:
-        temp_str = 'connect' + '\t' + str(wire_index) + '\tL1\t\t' + str(package_pad) + '\nto\t\tU1\t\t' + str(chip_indices[chip_pad]) + '\n\n'
+        temp_str = 'connect' + '\t' + str(wire_index) + '\tL1\t\t' + str(package_pad) + '\t' + str(group) + '\nto\t\tU1\t\t' + str(chip_indices[chip_pad]) + '\n\n'
     prog_str = prog_str + temp_str
     wire_index +=1
 program = program_header + prog_str + 'end'
