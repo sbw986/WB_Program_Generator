@@ -13,23 +13,23 @@ Optional: xml.etree, operator - Needed for csv conversion scripts
 
 Users must provide three files in the 'Config' directory: package.csv, chip.csv, .WIR
 
-package.csv:
+* package.csv:
 
-* This file should be arranged into three columns: Finger #, Finger X Origin (um),
+    * This file should be arranged into three columns: Finger #, Finger X Origin (um),
 Finger Y Origin (um).
 
-* The 'xml_to_csv.py' script can be used to convert an APD generated xml output to the required
+    * The 'xml_to_csv.py' script can be used to convert an APD generated xml output to the required
 CSV formatting.
 
-chip.csv:
+* chip.csv:
 
-* This file should be arranged into four columns: Pad ID value, Pad #, Pad X Origin (nm), Pad Y Origin (nm).
+    * This file should be arranged into four columns: Pad ID value, Pad #, Pad X Origin (nm), Pad Y Origin (nm).
 
-* The 'cif_to_csv.py' script can be used to convert a CIF file to the required CSV format.
+    * The 'cif_to_csv.py' script can be used to convert a CIF file to the required CSV format.
 
-.WIR:
+* .WIR:
 
-* Template .WIR file copied from any K&S Bonder program.
+    * Template .WIR file copied from K&S Bonder program.
 
 ### USAGE ###
 
