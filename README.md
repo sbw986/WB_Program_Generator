@@ -1,6 +1,6 @@
 # WB Program Generator #
 
-This script generates a program that can be used on a K&S 8028 wire bonder for automated bonding.  The script also
+This function generates a program that can be used on a K&S 8028 wire bonder for automated bonding.  The function also
 generates and saves a wire bonding diagram.
 
 ### DEPENDENCIES ###
@@ -33,21 +33,16 @@ chip.csv:
 
 ### USAGE ###
 
-Ensure package.csv, chip.csv and a template .WIR file are saved in 'Config' folder
+* Ensure package.csv, chip.csv and a template .WIR file are saved in 'Config' folder.
 
-Within WB_Program_Generator:
+* Create Job object:
 
-* Define chip pads to-be-bonded in order using chip_pad_job and Pad ID value
+** Set file name values in object using object.config_files('package.csv','chip.csv',template'.WIR')
 
-* Define package pads to-be-bonded in order using package_pad_job and Finger #.  There should be a 1-1 correspondence to
-chip_pad_job
+** Define separate lists for chip pads to-be-bonded, package pads to-be-bonded, and wire groups.  Set values in object
+respectively using object.define_wires(chip pads, package pads, wire groups)
 
-* Define wirebond group in order using groups_job.  Again, should be a 1-1 correspondence to chip_pad_job and package_pad_job
+** Set object plotting parameters using object.plotting_parameters().  Default values are initialized.
 
-* Define export file name using wires_file variable
-
-Run WB_Program_Generator script
-
-Change Graphing Constants within WB_Program_Generator script if plotting is not scaling properly
-
+* Run program by feeding Job object to generate_program function.
 
