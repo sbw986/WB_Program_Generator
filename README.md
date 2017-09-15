@@ -37,12 +37,12 @@ chip.csv:
 
 * Create Job object:
 
-** Set file name values in object using object.config_files('package.csv','chip.csv',template'.WIR')
+..* Set file name values in object using object.config_files('package.csv','chip.csv',template'.WIR')
 
-** Define separate lists for chip pads to-be-bonded, package pads to-be-bonded, and wire groups.  Set values in object
+..* Define separate lists for chip pads to-be-bonded, package pads to-be-bonded, and wire groups.  Set values in object
 respectively using object.define_wires(chip pads, package pads, wire groups)
 
-** Set object plotting parameters using object.plotting_parameters().  Default values are initialized.
+..* Set object plotting parameters using object.plotting_parameters().  Default values are initialized.
 
 * Run program by feeding Job object to generate_program function.
 
