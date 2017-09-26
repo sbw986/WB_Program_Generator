@@ -1,0 +1,56 @@
+#	09/14/17 15:17:54
+
+version	0.52
+
+group IE739303.PRM 1
+group IE739341.PRM 2
+group IE739342.PRM 3
+group IE739343.PRM 4
+
+# ---------------------------------------------------------------------------
+#	id	instance	site	group	profile		dep.1	dep.2
+# ---------------------------------------------------------------------------
+
+connect	1	L1		1	1	SSB1_Loop
+to		U1		2
+
+connect	2	L1		2	1
+to		U1		6
+
+connect	3	L1		3	1
+to		U1		7
+
+connect	4	L1		4	1
+to		U1		8
+
+connect	5	L1		171	1
+to		U1		72
+
+connect	6	L1		172	1
+to		U1		71
+
+connect	7	L1		173	1
+to		U1		70
+
+connect	8	L1		174	1
+to		U1		66
+
+connect	9	L1		59	1
+to		U1		129
+
+connect	10	L1		62	1
+to		U1		130
+
+connect	11	L1		116	1
+to		U1		131
+
+connect	12	L1		175	1
+to		U1		132
+
+connect	13	L1		178	1
+to		U1		133
+
+connect	14	L1		232	1
+to		U1		134
+
+end

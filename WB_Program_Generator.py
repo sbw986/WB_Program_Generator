@@ -147,9 +147,10 @@ def generate_program(Program_Info):
 
 if __name__ == '__main__':
 
+
     #Job 1
-    chip_pad_job = ['2A','6C','7B','8D']
-    package_pad_job = [1,2,3,4]
+    chip_pad_job = ['2A','3B','6A','6B','8A','8B','11C','15A','31A','40A','49C','50B','60C','62D','63B','67B','67D']
+    package_pad_job = [1,4,7,10,13,16,19,22,25,28,31,34,37,40,43,46,49]
     groups_job = []
 
     chip_pad_job, package_pad_job, groups_job = expand_bond_list_cnf(chip_pad_job, package_pad_job)
@@ -162,15 +163,17 @@ if __name__ == '__main__':
     generate_program(job_sbw)
 
     #Job 2
-    chip_pad_job = ['2','6','7','8']
-    package_pad_job = [1,2,3,4]
+    """
+    chip_pad_job = ['8','10','11','17','24','25']
+    package_pad_job = [3,8,13,18,23,28]
     groups_job = []
 
     chip_pad_job, package_pad_job, groups_job = expand_bond_list_erik(chip_pad_job, package_pad_job)
 
     job_erik = Job()
-    job_erik.config_files('package.csv','chip_erik.csv','DUMMY_TEMPLATE.WIR')
+    job_erik.config_files('package.csv','chip_erik.csv','II73A500.WIR')
     job_erik.define_wires(chip_pad_job, package_pad_job, groups_job)
     job_erik.plotting_parameters()
 
     generate_program(job_erik)
+    """

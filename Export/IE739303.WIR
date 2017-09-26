@@ -11,46 +11,124 @@ group IE739343.PRM 4
 #	id	instance	site	group	profile		dep.1	dep.2
 # ---------------------------------------------------------------------------
 
-connect	1	L1		1	4	SSB1_Loop
+connect	1	L1		40	1	SSB1_Loop
+to		U1		62
+
+connect	2	L1		49	1
+to		U1		67
+
+connect	3	L1		19	2
+to		U1		81
+
+connect	4	L1		31	2
+to		U1		119
+
+connect	5	L1		37	2
+to		U1		130
+
+connect	6	L1		4	3
+to		U1		143
+
+connect	7	L1		10	3
+to		U1		146
+
+connect	8	L1		16	3
+to		U1		148
+
+connect	9	L1		34	3
+to		U1		190
+
+connect	10	L1		43	3
+to		U1		203
+
+connect	11	L1		46	3
+to		U1		207
+
+connect	12	L1		1	4
 to		U1		211
 
-connect	2	L1		2	2
-to		U1		76
+connect	13	L1		7	4
+to		U1		215
 
-connect	3	L1		3	3
-to		U1		147
+connect	14	L1		13	4
+to		U1		217
 
-connect	4	L1		4	1
-to		U1		8
+connect	15	L1		22	4
+to		U1		224
 
-connect	5	L1		171	4
-to		U1		287
+connect	16	L1		25	4
+to		U1		240
 
-connect	6	L1		172	2
-to		U1		425
+connect	17	L1		28	4
+to		U1		249
 
-connect	7	L1		173	3
-to		U1		355
-
-connect	8	L1		174	1
+connect	18	L1		174	1
 to		U1		489
 
-connect	9	L1		59	1
+connect	19	L1		168	1
+to		U1		493
+
+connect	20	L1		162	1
+to		U1		495
+
+connect	21	L1		153	1
+to		U1		502
+
+connect	22	L1		150	1
+to		U1		518
+
+connect	23	L1		147	1
+to		U1		527
+
+connect	24	L1		171	2
+to		U1		421
+
+connect	25	L1		165	2
+to		U1		424
+
+connect	26	L1		159	2
+to		U1		426
+
+connect	27	L1		141	2
+to		U1		468
+
+connect	28	L1		132	2
+to		U1		481
+
+connect	29	L1		129	2
+to		U1		485
+
+connect	30	L1		156	3
+to		U1		360
+
+connect	31	L1		144	3
+to		U1		398
+
+connect	32	L1		138	3
+to		U1		409
+
+connect	33	L1		135	4
+to		U1		341
+
+connect	34	L1		126	4
+to		U1		346
+
+connect	35	L1		59	1
 to		U1		558
 
-connect	10	L1		62	1
+connect	36	L1		62	1
 to		U1		559
 
-connect	11	L1		116	1
+connect	37	L1		116	1
 to		U1		560
 
-connect	12	L1		175	1
+connect	38	L1		175	1
 to		U1		561
 
-connect	13	L1		178	1
+connect	39	L1		178	1
 to		U1		562
 
-connect	14	L1		232	1
+connect	40	L1		232	1
 to		U1		563
 
 end
