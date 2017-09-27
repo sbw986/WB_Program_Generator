@@ -28,9 +28,6 @@ def expand_bond_list_cnf(chip_pad_job,package_pad_job):
     package_pad_job_right_B = []
     package_pad_job_right_A = []
 
-    chip_pt = ['PT01', 'CC01', 'PT02', 'PT03', 'CC03', 'PT04']
-    package_pt = [59, 62, 116, 175, 178, 232]
-
     grp_L_D = []
     grp_L_C = []
     grp_L_B = []
@@ -40,6 +37,8 @@ def expand_bond_list_cnf(chip_pad_job,package_pad_job):
     grp_R_B = []
     grp_R_A = []
 
+    chip_pt = ['PT01', 'CC01', 'PT02', 'PT03', 'CC03', 'PT04']
+    package_pt = [59, 62, 116, 175, 178, 232]
     grp_PT = [1 for i,_ in enumerate(package_pt)]
 
     for chip,package in zip(chip_pad_job,package_pad_job):
