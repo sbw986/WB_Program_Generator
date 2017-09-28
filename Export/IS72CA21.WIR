@@ -1,0 +1,221 @@
+#	09/28/17 11:55:04
+
+version	0.52
+
+group IS72CA21.PRM 1
+
+# ---------------------------------------------------------------------------
+#	id	instance	site	group	profile		dep.1	dep.2
+# ---------------------------------------------------------------------------
+
+connect	1	L1		22	1	SSB1_Loop
+to		U1		33
+
+connect	2	L1		23	1
+to		U1		34
+
+connect	3	L1		24	1
+to		U1		35
+
+connect	4	L1		25	1
+to		U1		36
+
+connect	5	L1		26	1
+to		U1		37
+
+connect	6	L1		27	1
+to		U1		38
+
+connect	7	L1		28	1
+to		U1		39
+
+connect	8	L1		29	1
+to		U1		40
+
+connect	9	L1		30	1
+to		U1		41
+
+connect	10	L1		31	1
+to		U1		42
+
+connect	11	L1		32	1
+to		U1		43
+
+connect	12	L1		33	1
+to		U1		44
+
+connect	13	L1		34	1
+to		U1		45
+
+connect	14	L1		35	1
+to		U1		46
+
+connect	15	L1		36	1
+to		U1		47
+
+connect	16	L1		37	1
+to		U1		48
+
+connect	17	L1		38	1
+to		U1		49
+
+connect	18	L1		39	1
+to		U1		50
+
+connect	19	L1		40	1
+to		U1		51
+
+connect	20	L1		41	1
+to		U1		52
+
+connect	21	L1		42	1
+to		U1		53
+
+connect	22	L1		43	1
+to		U1		54
+
+connect	23	L1		44	1
+to		U1		55
+
+connect	24	L1		45	1
+to		U1		56
+
+connect	25	L1		46	1
+to		U1		57
+
+connect	26	L1		47	1
+to		U1		58
+
+connect	27	L1		48	1
+to		U1		59
+
+connect	28	L1		49	1
+to		U1		60
+
+connect	29	L1		50	1
+to		U1		61
+
+connect	30	L1		51	1
+to		U1		62
+
+connect	31	L1		52	1
+to		U1		63
+
+connect	32	L1		53	1
+to		U1		64
+
+connect	33	L1		122	1
+to		U1		65
+
+connect	34	L1		123	1
+to		U1		66
+
+connect	35	L1		124	1
+to		U1		67
+
+connect	36	L1		125	1
+to		U1		68
+
+connect	37	L1		126	1
+to		U1		69
+
+connect	38	L1		127	1
+to		U1		70
+
+connect	39	L1		128	1
+to		U1		71
+
+connect	40	L1		129	1
+to		U1		72
+
+connect	41	L1		130	1
+to		U1		73
+
+connect	42	L1		131	1
+to		U1		74
+
+connect	43	L1		132	1
+to		U1		75
+
+connect	44	L1		133	1
+to		U1		76
+
+connect	45	L1		134	1
+to		U1		77
+
+connect	46	L1		135	1
+to		U1		78
+
+connect	47	L1		136	1
+to		U1		79
+
+connect	48	L1		137	1
+to		U1		80
+
+connect	49	L1		138	1
+to		U1		81
+
+connect	50	L1		139	1
+to		U1		82
+
+connect	51	L1		140	1
+to		U1		83
+
+connect	52	L1		141	1
+to		U1		84
+
+connect	53	L1		142	1
+to		U1		85
+
+connect	54	L1		143	1
+to		U1		86
+
+connect	55	L1		144	1
+to		U1		87
+
+connect	56	L1		145	1
+to		U1		88
+
+connect	57	L1		146	1
+to		U1		89
+
+connect	58	L1		147	1
+to		U1		90
+
+connect	59	L1		148	1
+to		U1		91
+
+connect	60	L1		149	1
+to		U1		92
+
+connect	61	L1		150	1
+to		U1		93
+
+connect	62	L1		151	1
+to		U1		94
+
+connect	63	L1		152	1
+to		U1		95
+
+connect	64	L1		153	1
+to		U1		96
+
+connect	65	L1		59	1
+to		U1		129
+
+connect	66	L1		62	1
+to		U1		130
+
+connect	67	L1		116	1
+to		U1		131
+
+connect	68	L1		175	1
+to		U1		132
+
+connect	69	L1		178	1
+to		U1		133
+
+connect	70	L1		232	1
+to		U1		134
+
+end

@@ -147,7 +147,7 @@ def generate_program(Program_Info):
 
 if __name__ == '__main__':
 
-
+    """
     #Job 1
     chip_pad_job = ['2A','3B','6A','6B','8A','8B','11C','15A','31A','40A','49C','50B','60C','62D','63B','67B','67D']
     package_pad_job = [1,4,7,10,13,16,19,22,25,28,31,34,37,40,43,46,49]
@@ -161,9 +161,10 @@ if __name__ == '__main__':
     job_sbw.plotting_parameters()
 
     generate_program(job_sbw)
-
-    #Job 2
     """
+
+    """
+    #Job 2
     chip_pad_job = ['8','10','11','17','24','25']
     package_pad_job = [3,8,13,18,23,28]
     groups_job = []
@@ -177,3 +178,19 @@ if __name__ == '__main__':
 
     generate_program(job_erik)
     """
+
+    # Job 3
+    chip_pad_job = ['C1','C2','C3','C4','C5','C6','C7','C8','C9','C10','C11','C12','C13','C14','C15','C16',
+                    'D1', 'D2','D3','D4','D5','D6','D7','D8','D9','D10','D11','D12','D13','D14','D15','D16']
+    package_pad_job = [22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,
+                       38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53]
+    groups_job = []
+
+    chip_pad_job, package_pad_job, groups_job = expand_bond_list_gonzalez(chip_pad_job, package_pad_job)
+
+    job_gonzalez = Job()
+    job_gonzalez.config_files('package.csv', 'chip_gonzalez.csv', 'IS72CA21.WIR')
+    job_gonzalez.define_wires(chip_pad_job, package_pad_job, groups_job)
+    job_gonzalez.plotting_parameters()
+
+    generate_program(job_gonzalez)
