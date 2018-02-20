@@ -139,8 +139,11 @@ def generate_program(Program_Info):
     # Save Bonding Diagram
     w.update()
     w.postscript(file = 'tmp.ps',colormode = 'color')
-    process = subprocess.call(["ps2pdf", "tmp.ps", "Export/Diagram.pdf"])
-    process = subprocess.call(["rm", "tmp.ps"])
+    try:
+        process = subprocess.call(["ps2pdf", "tmp.ps", "Export/Diagram.pdf"])
+        process = subprocess.call(["rm", "tmp.ps"])
+    except:
+        print('Problem Exporting Bonding Diagram')
 
     # Graph
     mainloop()
