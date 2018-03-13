@@ -1,13 +1,7 @@
 # WB Program Generator #
 
-This function generates a program that can be used on a K&S 8028 wire bonder for automated bonding.  The function also
+This module generates a program that can be used on a K&S 8028 wire bonder for automated bonding.  The function also
 generates and saves a wire bonding diagram.
-
-### DEPENDENCIES ###
-
-Required: csv, tkinter, numpy, subprocess
-
-Optional: xml.etree, operator - Needed for csv conversion scripts
 
 ### CONFIGURATION FILES ###
 
